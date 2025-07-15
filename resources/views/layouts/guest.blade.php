@@ -1,3 +1,4 @@
+@props(['backgroundImage' => asset('images/default_bg.png')])
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -14,7 +15,8 @@
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="font-sans text-gray-900 antialiased bg-cover bg-center" style="background-image: url('/images/signup_bg.png');">
+    <body class="font-sans text-gray-900 antialiased bg-cover bg-center" 
+    style="background-image: url('{{ $backgroundImage ?? asset('images/default_bg.png') }}');">
         <div class="min-h-screen flex flex-col sm:justify-center items-center pt-6 sm:pt-0 bg-transparent">
             <div>
                 <a href="/">
@@ -22,7 +24,7 @@
                 </a>
             </div>
 
-            <div class="w-full sm:max-w-md px-6 py-4 shadow-md overflow-hidden sm:rounded-lg" style="background-color: #5B3E32">
+            <div class="w-full sm:max-w-md px-6 py-4 shadow-2xl overflow-hidden sm:rounded-2xl" style="background-color: #5B3E32">
                 {{ $slot }}
             </div>
         </div>

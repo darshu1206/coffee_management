@@ -1,4 +1,4 @@
-<x-guest-layout>
+<x-guest-layout :backgroundImage="asset('images/signup_bg.png')">
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
@@ -39,14 +39,19 @@
             <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
         </div>
 
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-[#C6BFBC] hover:text-[#8E7A72] rounded-md" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
+        <div class="flex items-center justify-center mt-4">
+            <x-primary-button>
+                    {{ __('Register') }}
             </x-primary-button>
         </div>
+        <div class="flex items-center justify-center mt-4">
+            <p class="text-sm text-[#C6BFBC] me-2">
+                {{ __('Already have an account?') }}
+            </p>
+            <a class="underline text-sm text-[#C6BFBC] hover:text-[#8E7A72] rounded-md" href="{{ route('login') }}">
+                {{ __('Login here') }}
+            </a>
+        </div>
+        
     </form>
 </x-guest-layout>

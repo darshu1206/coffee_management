@@ -1,6 +1,10 @@
-<x-guest-layout>
+<x-guest-layout :backgroundImage="asset('images/login_bg.png')">
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
+
+    <h2 class="text-center text-3xl font-bold text-[#C6BFBC] mb-6">
+        {{ __('Login') }}
+    </h2>
 
     <form method="POST" action="{{ route('login') }}">
         @csrf

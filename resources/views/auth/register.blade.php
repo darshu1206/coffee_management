@@ -1,4 +1,9 @@
 <x-guest-layout :backgroundImage="asset('images/signup_bg.png')">
+
+
+    <h2 class="text-center text-3xl font-bold text-[#C6BFBC] mb-6">
+        {{ __('Register') }}    
+    </h2>
     <form method="POST" action="{{ route('register') }}">
         @csrf
 

@@ -64,10 +64,10 @@
                             <p class="text-gray-900">{{ $category->sort_order ?? 'Not set' }}</p>
                         </div> -->
                         
-                        <div>
+                        {{-- <div>
                             <label class="block text-sm font-medium text-gray-500 mb-1">Total Products</label>
                             <p class="text-2xl font-bold text-blue-600">{{ $category->coffees_count ?? 0 }}</p>
-                        </div>
+                        </div> --}}
                         
                         <!-- <div>
                             <label class="block text-sm font-medium text-gray-500 mb-1">Active Products</label>
@@ -121,8 +121,8 @@
                             @foreach($category->coffees as $coffee)
                                 <div class="border border-gray-200 rounded-lg p-4 hover:shadow-md transition-shadow">
                                     <div class="flex items-center space-x-4">
-                                        @if($coffee->image)
-                                            <img src="{{ asset('storage/' . $coffee->image) }}" alt="{{ $coffee->name }}" class="h-16 w-16 rounded-lg object-cover">
+                                        @if($coffee->image_url)
+                                            <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" class="h-16 w-16 rounded-lg object-cover">
                                         @else
                                             <div class="h-16 w-16 bg-gray-200 rounded-lg flex items-center justify-center">
                                                 <i class="fas fa-coffee text-gray-400"></i>
@@ -131,14 +131,14 @@
                                         
                                         <div class="flex-1">
                                             <h5 class="font-medium text-gray-900">{{ $coffee->name }}</h5>
-                                            <p class="text-sm text-gray-600">${{ number_format($coffee->price, 2) }}</p>
+                                            <p class="text-sm text-gray-600">₹{{ number_format($coffee->price, 2) }}</p>
                                             <div class="flex items-center space-x-2 mt-1">
                                                 <span class="px-2 py-1 text-xs rounded-full {{ $coffee->stock_quantity < 10 ? 'bg-red-100 text-red-800' : 'bg-green-100 text-green-800' }}">
                                                     {{ $coffee->stock_quantity }} in stock
                                                 </span>
-                                                <span class="px-2 py-1 text-xs rounded-full {{ $coffee->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
+                                                {{-- <span class="px-2 py-1 text-xs rounded-full {{ $coffee->is_active ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-800' }}">
                                                     {{ $coffee->is_active ? 'Active' : 'Inactive' }}
-                                                </span>
+                                                </span> --}}
                                             </div>
                                         </div>
                                         
@@ -180,9 +180,9 @@
             <!-- Category Image -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h4 class="text-lg font-medium text-gray-900 mb-4">Category Image</h4>
-                @if($category->image)
-                    <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" 
-                         class="w-full h-48 object-cover rounded-lg">
+                @if($category->image_url)
+                    <img src="{{ asset('images/category_images/' . $category->image_url) }}" alt="{{ $category->name }}" 
+                         class="w-48 h-48 object-cover rounded-lg mx-auto">
                 @else
                     <div class="w-full h-48 bg-gray-200 rounded-lg flex items-center justify-center">
                         <div class="text-center">

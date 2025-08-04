@@ -40,8 +40,15 @@ class AdminCategoryController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('categories', 'public');
-            $data['image_url'] = $imagePath;
+            // $imagePath = $request->file('image')->store('categories', 'public');
+            // $data['image_url'] = $imagePath;
+
+            $image = $request->file('image');
+
+            // Generate filename like category_20250804_123456.jpg
+            $imageName = 'category_' . now()->format('Ymd_His') . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/category_images'), $imageName);
+            $data['image_url'] = $imageName;
         }
 
         Category::create($data);

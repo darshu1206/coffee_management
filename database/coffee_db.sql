@@ -3,9 +3,9 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Aug 03, 2025 at 07:35 PM
--- Server version: 10.4.28-MariaDB
--- PHP Version: 8.2.4
+-- Generation Time: Aug 04, 2025 at 11:01 AM
+-- Server version: 10.4.32-MariaDB
+-- PHP Version: 8.2.12
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -32,6 +32,16 @@ CREATE TABLE `cache` (
   `value` mediumtext NOT NULL,
   `expiration` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+--
+-- Dumping data for table `cache`
+--
+
+INSERT INTO `cache` (`key`, `value`, `expiration`) VALUES
+('coffeeshop-cache-darshana@gmail.com|127.0.0.1', 'i:1;', 1754297460),
+('coffeeshop-cache-darshana@gmail.com|127.0.0.1:timer', 'i:1754297460;', 1754297460),
+('coffeeshop-cache-darshanagohil0@gmail.com|127.0.0.1', 'i:2;', 1754297465),
+('coffeeshop-cache-darshanagohil0@gmail.com|127.0.0.1:timer', 'i:1754297465;', 1754297465);
 
 -- --------------------------------------------------------
 
@@ -91,11 +101,12 @@ CREATE TABLE `categories` (
 --
 
 INSERT INTO `categories` (`id`, `name`, `description`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'Espresso', 'Strong, concentrated coffee', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(2, 'Americano', 'Espresso with hot water', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(3, 'Latte', 'Espresso with steamed milk', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(4, 'Cappuccino', 'Espresso with steamed milk and foam', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(5, 'Cold Brew', 'Coffee brewed with cold water', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12');
+(1, 'Espresso', 'Strong, concentrated coffee', 'category_1.png', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(2, 'Americano', 'Espresso with hot water', 'category_2.png', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(3, 'Latte', 'Espresso with steamed milk', 'category_3.png', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(4, 'Cappuccino', 'Espresso with steamed milk and foam', 'category_4.png', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(5, 'Cold Brew', 'Coffee brewed with cold water', 'category_5.png', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(6, 'Mocha', 'combines espresso, steamed milk, and chocolate', 'category_20250804_080402.png', '2025-08-04 02:34:02', '2025-08-04 02:34:02');
 
 -- --------------------------------------------------------
 
@@ -123,12 +134,13 @@ CREATE TABLE `coffees` (
 --
 
 INSERT INTO `coffees` (`id`, `name`, `description`, `price`, `stock_quantity`, `category_id`, `supplier_id`, `roast_level`, `origin`, `image_url`, `created_at`, `updated_at`) VALUES
-(1, 'Colombian Supremo', 'Premium Colombian coffee with rich flavor', 299.00, 50, 1, 1, 'medium', 'Colombia', NULL, '2025-07-17 10:54:12', '2025-08-03 10:48:03'),
-(2, 'Ethiopian Yirgacheffe', 'Floral and citrusy Ethiopian coffee', 449.00, 30, 2, 2, 'light', 'Ethiopia', NULL, '2025-07-17 10:54:12', '2025-08-03 10:47:53'),
-(3, 'Brazilian Santos', 'Smooth and balanced Brazilian coffee', 349.00, 75, 3, 3, 'medium', 'Brazil', NULL, '2025-07-17 10:54:12', '2025-08-03 10:47:44'),
-(4, 'Colombian Decaf', 'Decaffeinated Colombian coffee', 419.00, 25, 1, 1, 'medium', 'Colombia', NULL, '2025-07-17 10:54:12', '2025-08-03 10:47:34'),
-(5, 'Ethiopian Sidamo', 'Wine-like Ethiopian coffee', 419.00, 11, 4, 2, 'dark', 'Ethiopia', NULL, '2025-07-17 10:54:12', '2025-08-03 10:47:23'),
-(6, 'Brazilian Cold Brew', 'Perfect for cold brewing', 599.00, 5, 5, 3, 'medium', 'Brazil', NULL, '2025-07-17 10:54:12', '2025-08-03 10:47:14');
+(1, 'Colombian Supremo', 'Premium Colombian coffee with rich flavor', 299.00, 50, 1, 1, 'medium', 'Colombia', 'coffee_1.jpg', '2025-07-17 10:54:12', '2025-08-03 10:48:03'),
+(2, 'Ethiopian Yirgacheffe', 'Floral and citrusy Ethiopian coffee', 449.00, 30, 2, 2, 'light', 'Ethiopia', 'coffee_2.png', '2025-07-17 10:54:12', '2025-08-03 10:47:53'),
+(3, 'Brazilian Santos', 'Smooth and balanced Brazilian coffee', 349.00, 75, 3, 3, 'medium', 'Brazil', 'coffee_3.JPG', '2025-07-17 10:54:12', '2025-08-03 10:47:44'),
+(4, 'Colombian Decaf', 'Decaffeinated Colombian coffee', 419.00, 25, 1, 1, 'medium', 'Colombia', 'coffee_4.png', '2025-07-17 10:54:12', '2025-08-03 10:47:34'),
+(5, 'Ethiopian Sidamo', 'Wine-like Ethiopian coffee', 419.00, 11, 4, 2, 'dark', 'Ethiopia', 'coffee_5.png', '2025-07-17 10:54:12', '2025-08-03 10:47:23'),
+(6, 'Brazilian Cold Brew', 'Perfect for cold brewing', 599.00, 5, 5, 3, 'medium', 'Brazil', 'coffee_6.jpeg', '2025-07-17 10:54:12', '2025-08-03 10:47:14'),
+(7, 'Mocha Coffee', 'A rich and indulgent blend of coffee and chocolate flavors, Mocha Coffee offers a smooth texture with a slightly sweet finish - perfect for those who enjoy a dessert-like coffee experience.', 249.00, 20, 6, 3, 'medium', 'Ethiopia', 'coffee_20250804_081945.png', '2025-08-04 02:49:45', '2025-08-04 02:49:45');
 
 -- --------------------------------------------------------
 
@@ -260,11 +272,11 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `customer_id`, `total_amount`, `status`, `order_date`, `delivery_address`, `payment_method`, `notes`, `created_at`, `updated_at`) VALUES
-(1, 1, 499.00, 'completed', '2025-07-16 10:54:12', '123 Main St, City, State', 'card', 'Please deliver in the morning', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(2, 2, 339.00, 'pending', '2025-07-17 07:54:12', '456 Oak Ave, City, State', 'online', NULL, '2025-07-17 10:54:12', '2025-08-03 10:05:14'),
-(3, 3, 449.00, 'pending', '2025-07-17 10:24:12', '789 Pine Rd, City, State', 'cash', 'Call before delivery', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(4, 1, 339.00, 'completed', '2025-07-12 10:54:12', '123 Main St, City, State', 'card', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(5, 2, 549.00, 'completed', '2025-07-07 10:54:12', '456 Oak Ave, City, State', 'online', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12');
+(1, 1, 947.00, 'completed', '2025-07-16 10:54:12', '123 Main St, City, State', 'card', 'Please deliver in the morning', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(2, 2, 449.00, 'pending', '2025-07-17 07:54:12', '456 Oak Ave, City, State', 'online', NULL, '2025-07-17 10:54:12', '2025-08-03 10:05:14'),
+(3, 3, 1616.00, 'pending', '2025-07-17 10:24:12', '789 Pine Rd, City, State', 'cash', 'Call before delivery', '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(4, 1, 1117.00, 'completed', '2025-07-12 10:54:12', '123 Main St, City, State', 'card', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(5, 2, 299.00, 'completed', '2025-07-07 10:54:12', '456 Oak Ave, City, State', 'online', NULL, '2025-07-17 10:54:12', '2025-07-17 10:54:12');
 
 -- --------------------------------------------------------
 
@@ -288,15 +300,15 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `coffee_id`, `quantity`, `price`, `subtotal`, `created_at`, `updated_at`) VALUES
-(1, 1, 1, 2, 18.99, 37.98, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(2, 1, 3, 1, 16.75, 16.75, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(3, 2, 2, 1, 22.50, 22.50, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(4, 3, 1, 1, 18.99, 18.99, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(5, 3, 2, 2, 22.50, 45.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(6, 3, 4, 1, 19.99, 19.99, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(7, 4, 3, 2, 16.75, 33.50, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(8, 4, 5, 1, 21.00, 21.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
-(9, 5, 1, 1, 18.99, 18.99, '2025-07-17 10:54:12', '2025-07-17 10:54:12');
+(1, 1, 1, 2, 299.00, 598.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(2, 1, 3, 1, 349.00, 349.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(3, 2, 2, 1, 449.00, 449.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(4, 3, 1, 1, 299.00, 299.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(5, 3, 2, 2, 449.00, 898.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(6, 3, 4, 1, 419.00, 419.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(7, 4, 3, 2, 349.00, 698.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(8, 4, 5, 1, 419.00, 419.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12'),
+(9, 5, 1, 1, 299.00, 299.00, '2025-07-17 10:54:12', '2025-07-17 10:54:12');
 
 -- --------------------------------------------------------
 
@@ -337,8 +349,9 @@ CREATE TABLE `sessions` (
 --
 
 INSERT INTO `sessions` (`id`, `user_id`, `ip_address`, `user_agent`, `payload`, `last_activity`) VALUES
-('4tre2Z89ZP2EQJ2ygnHpwsacTxDpxtMevHhvFdnZ', 4, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiRjd3WWREanJKUDA2YnBuQVBFNlR0TEFVYXpsSEl5clpHWjNSd3NRRyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMzOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvYWRtaW4vdXNlcnMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTo0O30=', 1754242312),
-('GbNVLXT8qr7yMa50gdAcUnnKaLarQCgj9wGE3ubs', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoid3pwdXhHV0J3dXFXb2NlS3NPM3BHU3NqZjJhSFRNVjhpZXIzMTFzMyI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1754241221);
+('4TIxabjkpsQrJSCX71YcDQ7dxI5Hf1wo9OuTXcGx', NULL, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTozOntzOjY6Il90b2tlbiI7czo0MDoiVXNJNWd0d3JOV2tJblJjdnVhVVFIU1Q2TG1hd0F0VDBKa3A1QURYVCI7czo5OiJfcHJldmlvdXMiO2E6MTp7czozOiJ1cmwiO3M6MzM6Imh0dHA6Ly8xMjcuMC4wLjE6ODAwMC9hZG1pbi9sb2dpbiI7fXM6NjoiX2ZsYXNoIjthOjI6e3M6Mzoib2xkIjthOjA6e31zOjM6Im5ldyI7YTowOnt9fX0=', 1754290372),
+('Dmx9phCFjfNQSd5ay9wqbScSNa2RkPYO1CZVIvZG', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiWFhPNlJwY01mSGoyMURSbENJeEVndDZmZVhNS3FqNTk0bXdzamdWWiI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjIxOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1754290322),
+('rqkW8noX8QiOl0IDDP7TCxkH6jX6VLjXZpIO4r5M', 3, '127.0.0.1', 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/138.0.0.0 Safari/537.36', 'YTo1OntzOjY6Il90b2tlbiI7czo0MDoiM2F4MHRBellNaVJ5RVlIcDFSdERhcjdlbThFcmY5TW9XbDF6cE1sTCI7czo2OiJfZmxhc2giO2E6Mjp7czozOiJvbGQiO2E6MDp7fXM6MzoibmV3IjthOjA6e319czozOiJ1cmwiO2E6MDp7fXM6OToiX3ByZXZpb3VzIjthOjE6e3M6MzoidXJsIjtzOjMwOiJodHRwOi8vMTI3LjAuMC4xOjgwMDAvb3JkZXJzLzMiO31zOjUwOiJsb2dpbl93ZWJfNTliYTM2YWRkYzJiMmY5NDAxNTgwZjAxNGM3ZjU4ZWE0ZTMwOTg5ZCI7aTozO30=', 1754297725);
 
 -- --------------------------------------------------------
 
@@ -391,8 +404,8 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`id`, `name`, `email`, `email_verified_at`, `password`, `remember_token`, `created_at`, `updated_at`) VALUES
 (1, 'Rutvik', 'rutvikkachela@gmail.com', NULL, '$2y$12$E0/eQLa.FjrFRTHv.xWkSutnnSc4qN1EXdCRgHYvlg3N3CW9u92dG', NULL, '2025-07-17 10:55:34', '2025-08-03 12:01:52'),
-(3, 'Anirudh', 'anirudhkachela@gmail.com', NULL, '$2y$12$FTaQNH.fnYbEzN.ZLaDUw.EF9E4IyhF4Rc1nS4D9lO4m6XglNG26y', 'oW0M4mWErOyu0qwIBEJWbwY78iRkf1C66i9hiTF8M9lop1l0eLDpzlFFZH7C', '2025-07-31 11:26:11', '2025-07-31 11:26:11'),
-(4, 'Admin User', 'admin@coffeeshop.com', NULL, '$2y$12$Zi2zz0r992qXm.qGhPrg6ejTgnl5xk.JjtbsETUC3lSDrvJrL9P0u', NULL, '2025-08-03 03:22:26', '2025-08-03 03:22:26');
+(3, 'Anirudh', 'anirudhkachela@gmail.com', NULL, '$2y$12$FTaQNH.fnYbEzN.ZLaDUw.EF9E4IyhF4Rc1nS4D9lO4m6XglNG26y', 'saOHd6yABNK5zhIzexzniW6XPLwpvoDEZal8aNUf5cfVyIyyRm6mAAx18QeS', '2025-07-31 11:26:11', '2025-07-31 11:26:11'),
+(4, 'Admin User', 'admin@coffeeshop.com', NULL, '$2y$12$zH7wPQkKJBekZ2ObWzNN7uA1OPBTef54fw7unPEKUg9a/j28xRv4C', NULL, '2025-08-03 03:22:26', '2025-08-04 00:27:13');
 
 --
 -- Indexes for dumped tables
@@ -522,13 +535,13 @@ ALTER TABLE `carts`
 -- AUTO_INCREMENT for table `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `coffees`
 --
 ALTER TABLE `coffees`
-  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` bigint(20) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `customers`

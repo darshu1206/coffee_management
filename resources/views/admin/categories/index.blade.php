@@ -49,10 +49,10 @@
         @forelse($categories ?? [] as $category)
             <div class="bg-white rounded-lg shadow hover:shadow-md transition-shadow">
                 <!-- Category Image -->
-                <div class="h-48 bg-gradient-to-br from-blue-100 to-blue-200 rounded-t-lg flex items-center justify-center">
-                    @if($category->image)
-                        <img src="{{ asset('storage/' . $category->image) }}" alt="{{ $category->name }}" 
-                             class="h-full w-full object-cover rounded-t-lg">
+                <div class="bg-white rounded-t-lg flex items-center justify-center">
+                    @if($category->image_url)
+                        <img src="{{ asset('images/category_images/' . $category->image_url) }}" alt="{{ $category->name }}" 
+                             class="h-48 w-48 object-cover mt-2">
                     @else
                         <i class="fas fa-tag text-4xl text-blue-400"></i>
                     @endif
@@ -124,7 +124,7 @@
     @endif
 
     <!-- Quick Stats -->
-    <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+    {{-- <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
         <div class="bg-white rounded-lg shadow p-6 text-center">
             <div class="text-2xl font-bold text-blue-600">{{ $stats['total_categories'] ?? 0 }}</div>
             <div class="text-sm text-gray-500">Total Categories</div>
@@ -141,6 +141,6 @@
             <div class="text-2xl font-bold text-gray-600">{{ $stats['empty_categories'] ?? 0 }}</div>
             <div class="text-sm text-gray-500">Empty Categories</div>
         </div>
-    </div>
+    </div> --}}
 </div>
 @endsection

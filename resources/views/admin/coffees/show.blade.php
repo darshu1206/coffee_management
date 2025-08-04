@@ -110,7 +110,7 @@
             </div>
 
             <!-- Sales Performance -->
-            <div class="bg-white rounded-lg shadow">
+            {{-- <div class="bg-white rounded-lg shadow">
                 <div class="p-6 border-b border-gray-200">
                     <h4 class="text-lg font-medium text-gray-900">Sales Performance</h4>
                 </div>
@@ -130,7 +130,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
         </div>
 
         <!-- Sidebar -->

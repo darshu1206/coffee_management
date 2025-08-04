@@ -102,9 +102,17 @@
             @foreach($categories as $category)
             <a href="{{ route('user.shop', ['category' => $category->id]) }}" 
                class="coffee-card rounded-xl p-6 text-center hover-lift group">
-                <div class="p-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all">
-                    <i class="fas fa-coffee text-2xl text-white"></i>
-                </div>
+                
+                    @if($category->image_url)
+                        <img src="{{ asset('images/category_images/' . $category->image_url) }}" 
+                            alt="{{ $category->name }}" 
+                            class="w-32 h-32 object-cover rounded-3xl mx-auto">
+                    @else
+                        <div class="p-4 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full w-16 h-16 mx-auto mb-4 flex items-center justify-center group-hover:from-yellow-500 group-hover:to-yellow-700 transition-all">
+                            <i class="fas fa-coffee text-2xl text-white"></i>
+                        </div>
+                    @endif
+                
                 <h3 class="text-lg font-bold text-gray-900 mb-2">{{ $category->name }}</h3>
                 <p class="text-sm text-gray-600 mb-2">{{ $category->description ?? 'Premium selection' }}</p>
                 <span class="text-xs bg-gray-100 px-2 py-1 rounded-full">

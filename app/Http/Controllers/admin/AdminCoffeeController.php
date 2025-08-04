@@ -51,8 +51,15 @@ class AdminCoffeeController extends Controller
 
         // Handle image upload
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('coffees', 'public');
-            $data['image_url'] = $imagePath;
+            // $imagePath = $request->file('image')->store('coffees', 'public');
+            // $data['image_url'] = $imagePath;
+            // dd($request->file('image'));
+            $image = $request->file('image');
+
+            // Generate filename like category_20250804_123456.jpg
+            $imageName = 'coffee_' . now()->format('Ymd_His') . '.' . $image->getClientOriginalExtension();
+            $image->move(public_path('images/coffee_images'), $imageName);
+            $data['image_url'] = $imageName;
         }
 
         Coffee::create($data);

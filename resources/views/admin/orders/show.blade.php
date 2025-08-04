@@ -76,8 +76,8 @@
                         @foreach($order->orderItems as $item)
                             <div class="flex items-center justify-between p-4 bg-gray-50 rounded-lg">
                                 <div class="flex items-center space-x-4">
-                                    @if($item->coffee->image)
-                                        <img src="{{ asset('storage/' . $item->coffee->image) }}" 
+                                    @if($item->coffee->image_url)
+                                        <img src="{{ asset('images/coffee_images/' . $item->coffee->image_url) }}" 
                                              alt="{{ $item->coffee->name }}" 
                                              class="w-16 h-16 object-cover rounded-lg">
                                     @else

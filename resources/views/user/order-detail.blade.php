@@ -1,35 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.user-layout')
 
-@section('title', 'Order #' . $order->id . ' - Coffee Shop')
+@section('title', 'Order Detail')
 
 @section('content')
 <div class="container mx-auto px-4 py-8">
-    <!-- Breadcrumb -->
-    <nav class="flex mb-8" aria-label="Breadcrumb">
-        <ol class="inline-flex items-center space-x-1 md:space-x-3">
-            <li class="inline-flex items-center">
-                <a href="{{ route('user.dashboard') }}" class="inline-flex items-center text-sm font-medium text-gray-700 hover:text-amber-600">
-                    Dashboard
-                </a>
-            </li>
-            <li>
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <a href="{{ route('user.order.history') }}" class="ml-1 text-sm font-medium text-gray-700 hover:text-amber-600 md:ml-2">Orders</a>
-                </div>
-            </li>
-            <li aria-current="page">
-                <div class="flex items-center">
-                    <svg class="w-6 h-6 text-gray-400" fill="currentColor" viewBox="0 0 20 20">
-                        <path fill-rule="evenodd" d="M7.293 14.707a1 1 0 010-1.414L10.586 10 7.293 6.707a1 1 0 011.414-1.414l4 4a1 1 0 010 1.414l-4 4a1 1 0 01-1.414 0z" clip-rule="evenodd"></path>
-                    </svg>
-                    <span class="ml-1 text-sm font-medium text-gray-500 md:ml-2">Order #{{ $order->id }}</span>
-                </div>
-            </li>
-        </ol>
-    </nav>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
         <!-- Order Details -->
@@ -96,7 +70,7 @@
                     @foreach($order->orderItems as $item)
                     <div class="flex items-center space-x-4 p-4 border border-gray-200 rounded-lg">
                         @if($item->coffee->image_url)
-                        <img src="{{ $item->coffee->image_url }}" alt="{{ $item->coffee->name }}" class="w-20 h-20 object-cover rounded">
+                        <img src="{{ asset('images/coffee_images/' . $item->coffee->image_url) }}" alt="{{ $item->coffee->name }}" class="w-20 h-20 object-cover rounded">
                         @else
                         <div class="w-20 h-20 bg-gray-200 rounded flex items-center justify-center">
                             <span class="text-gray-400 text-xs">No Image</span>
@@ -138,12 +112,12 @@
                     
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Shipping</span>
-                        <span class="text-gray-900">$0.00</span>
+                        <span class="text-gray-900">₹0.00</span>
                     </div>
                     
                     <div class="flex justify-between text-sm">
                         <span class="text-gray-600">Tax</span>
-                        <span class="text-gray-900">$0.00</span>
+                        <span class="text-gray-900">₹0.00</span>
                     </div>
                     
                     <div class="border-t border-gray-200 pt-3">
@@ -198,7 +172,7 @@
                         Download Invoice
                     </button>
                     
-                    <a href="{{ route('user.order.history') }}" class="w-full bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 transition duration-300 block text-center">
+                    <a href="{{ route('user.orders') }}" class="w-full bg-gray-300 text-gray-700 py-2 px-4 rounded hover:bg-gray-400 transition duration-300 block text-center">
                         Back to Orders
                     </a>
                 </div>

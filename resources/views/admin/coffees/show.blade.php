@@ -138,8 +138,8 @@
             <!-- Product Image -->
             <div class="bg-white rounded-lg shadow p-6">
                 <h4 class="text-lg font-medium text-gray-900 mb-4">Product Image</h4>
-                @if($coffee->image)
-                    <img src="{{ asset('storage/' . $coffee->image) }}" alt="{{ $coffee->name }}" 
+                @if($coffee->image_url)
+                    <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" 
                          class="w-full h-64 object-cover rounded-lg">
                 @else
                     <div class="w-full h-64 bg-gray-200 rounded-lg flex items-center justify-center">

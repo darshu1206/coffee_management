@@ -58,7 +58,7 @@
                 <!-- Logo -->
                 <div class="flex items-center">
                     <a href="{{ route('user.home') }}" class="flex items-center space-x-2">
-                        <i class="fas fa-coffee text-2xl text-white"></i>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain">
                         <span class="text-xl font-bold text-white">{{ config('app.name', 'Coffee Shop') }}</span>
                     </a>
                 </div>
@@ -178,7 +178,7 @@
                 <!-- Company Info -->
                 <div>
                     <div class="flex items-center space-x-2 mb-4">
-                        <i class="fas fa-coffee text-2xl text-white"></i>
+                        <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain">
                         <span class="text-xl font-bold text-white">{{ config('app.name') }}</span>
                     </div>
                     <p class="text-gray-300 text-sm">

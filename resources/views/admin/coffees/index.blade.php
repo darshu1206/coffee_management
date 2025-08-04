@@ -75,8 +75,8 @@
                         <tr class="hover:bg-gray-50">
                             <td class="px-6 py-4 whitespace-nowrap">
                                 <div class="flex items-center">
-                                    @if($coffee->image)
-                                        <img src="{{ asset('storage/' . $coffee->image) }}" alt="{{ $coffee->name }}" class="h-12 w-12 rounded-lg object-cover mr-4">
+                                    @if($coffee->image_url)
+                                        <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" class="h-12 w-12 rounded-lg object-cover mr-4">
                                     @else
                                         <div class="h-12 w-12 bg-gray-200 rounded-lg flex items-center justify-center mr-4">
                                             <i class="fas fa-coffee text-gray-400"></i>

@@ -128,11 +128,11 @@
                         <h4 class="text-md font-medium text-gray-900 mb-4">Product Image</h4>
                         
                         <div class="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-amber-400 transition-colors">
-                            <div id="image-preview" class="{{ $coffee->image ? '' : 'hidden' }} mb-4">
-                                <img id="preview-img" src="{{ $coffee->image ? asset('storage/' . $coffee->image) : '' }}" alt="Preview" class="mx-auto h-32 w-32 object-cover rounded-lg">
+                            <div id="image-preview" class="{{ $coffee->image_url ? '' : 'hidden' }} mb-4">
+                                <img id="preview-img" src="{{ $coffee->image_url ? asset('images/coffee_images/' . $coffee->image_url) : '' }}" alt="Preview" class="mx-auto h-32 w-32 object-cover rounded-lg">
                             </div>
                             
-                            <div id="upload-placeholder" class="{{ $coffee->image ? 'hidden' : '' }}">
+                            <div id="upload-placeholder" class="{{ $coffee->image_url ? 'hidden' : '' }}">
                                 <i class="fas fa-image text-4xl text-gray-400 mb-4"></i>
                                 <p class="text-gray-600 mb-2">Upload product image</p>
                                 <p class="text-sm text-gray-500">PNG, JPG, GIF up to 2MB</p>
@@ -144,7 +144,7 @@
                                 {{ $coffee->image ? 'Change Image' : 'Choose Image' }}
                             </button>
                             
-                            @if($coffee->image)
+                            @if($coffee->image_url)
                                 <div class="mt-2">
                                     <label class="flex items-center justify-center">
                                         <input type="checkbox" name="remove_image" value="1" class="mr-2">

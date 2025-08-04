@@ -98,7 +98,7 @@
                         <div class="flex items-center space-x-3">
                             <div class="flex-shrink-0">
                                 @if($item->coffee->image_url)
-                                    <img src="{{ $item->coffee->image_url }}" alt="{{ $item->coffee->name }}" 
+                                    <img src="{{ asset('images/coffee_images/' . $item->coffee->image_url) }}" alt="{{ $item->coffee->name }}" 
                                          class="w-12 h-12 object-cover rounded-lg">
                                 @else
                                     <div class="w-12 h-12 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-lg flex items-center justify-center">

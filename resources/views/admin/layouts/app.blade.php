@@ -14,7 +14,7 @@
         <div class="text-white w-64 min-h-screen p-4 fixed top-0 left-0 h-screen" style="background-color: #5B3E32;">
             <!-- Logo -->
             <div class="flex items-center space-x-2 mb-8">
-                <i class="fas fa-coffee text-2xl"></i>
+                <img src="{{ asset('images/logo.png') }}" alt="Logo" class="w-12 h-12 object-contain">
                 <div>
                     <h1 class="text-xl font-bold">CoffeeShop</h1>
                     <p class="text-amber-200 text-sm">Admin Panel</p>

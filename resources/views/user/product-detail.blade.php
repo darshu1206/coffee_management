@@ -34,7 +34,7 @@
                 <!-- Main Image -->
                 <div class="bg-gray-100 rounded-2xl overflow-hidden mb-4 aspect-square">
                     @if($coffee->image_url)
-                        <img src="{{ $coffee->image_url }}" alt="{{ $coffee->name }}" 
+                        <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" 
                              class="w-full h-full object-cover" id="main-image">
                     @else
                         <div class="w-full h-full bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">
@@ -47,7 +47,7 @@
                 <div class="flex space-x-2">
                     @if($coffee->image_url)
                         <div class="w-16 h-16 bg-gray-100 rounded-lg overflow-hidden cursor-pointer border-2 border-yellow-500">
-                            <img src="{{ $coffee->image_url }}" alt="{{ $coffee->name }}" class="w-full h-full object-cover">
+                            <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" class="w-full h-full object-cover">
                         </div>
                     @endif
                 </div>
@@ -189,7 +189,7 @@
             <div class="mt-8 space-y-4">
                 <div class="flex items-center text-sm text-gray-600">
                     <i class="fas fa-truck text-green-500 mr-2"></i>
-                    Free shipping on orders over $50
+                    Free shipping on orders over ₹500
                 </div>
                 <div class="flex items-center text-sm text-gray-600">
                     <i class="fas fa-undo text-blue-500 mr-2"></i>
@@ -338,8 +338,8 @@
             @foreach($relatedCoffees as $relatedCoffee)
             <div class="coffee-card rounded-xl overflow-hidden hover-lift">
                 <div class="relative">
-                    @if($relatedCoffee->image_url)
-                        <img src="{{ $relatedCoffee->image_url }}" alt="{{ $relatedCoffee->name }}" 
+                    @if($relatedCoffee->image_url) 
+                        <img src="{{ asset('images/coffee_images/' . $relatedCoffee->image_url) }}" alt="{{ $relatedCoffee->name }}" 
                              class="w-full h-48 object-cover">
                     @else
                         <div class="w-full h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">

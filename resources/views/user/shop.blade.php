@@ -133,7 +133,7 @@
                     <div class="coffee-card rounded-xl overflow-hidden hover-lift">
                         <div class="relative">
                             @if($coffee->image_url)
-                                <img src="{{ $coffee->image_url }}" alt="{{ $coffee->name }}" 
+                                <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" 
                                      class="w-full h-48 object-cover">
                             @else
                                 <div class="w-full h-48 bg-gradient-to-br from-yellow-400 to-yellow-600 flex items-center justify-center">

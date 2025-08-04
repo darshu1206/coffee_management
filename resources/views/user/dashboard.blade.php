@@ -145,7 +145,7 @@
             @foreach($featuredCoffees->take(6) as $coffee)
                 <div class="border border-gray-200 rounded-lg overflow-hidden hover:shadow transition">
                     @if($coffee->image_url)
-                        <img src="{{ $coffee->image_url }}" alt="{{ $coffee->name }}" class="w-full h-32 object-cover">
+                        <img src="{{ asset('images/coffee_images/' . $coffee->image_url) }}" alt="{{ $coffee->name }}" class="w-full h-32 object-cover">
                     @else
                         <div class="w-full h-32 bg-gray-100 flex items-center justify-center text-gray-400">No Image</div>
                     @endif

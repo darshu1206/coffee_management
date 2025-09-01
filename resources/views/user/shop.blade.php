@@ -187,7 +187,7 @@
                                 </a>
                                 @auth
                                     @if($coffee->stock_quantity > 0)
-                                        <button onclick="addToCart({{ $coffee->id }})" 
+                                        <button onclick="addToCart({{ $coffee->id }}, 1)" 
                                                 class="bg-gray-200 hover:bg-gray-300 px-3 py-2 rounded-lg transition-colors">
                                             <i class="fas fa-shopping-cart"></i>
                                         </button>
@@ -236,39 +236,43 @@
 
 @push('scripts')
 <script>
-function addToCart(coffeeId) {
-    @auth
-    fetch('{{ route("user.cart.add") }}', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-            'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content')
-        },
-        body: JSON.stringify({
-            coffee_id: coffeeId,
-            quantity: 1
+    /**
+     * addToCart helper
+     * Call addToCart(coffeeId, qty) from product pages/buttons.
+     * Updates badge on success.
+     */
+    function addToCart(coffeeId, qty = 1) {
+        const badge = document.getElementById('cart-count');
+        console.log('Adding to cart:', coffeeId, qty);
+        console.log('Cart badge element:', badge);
+        fetch("{{ route('user.cart.add') }}", {
+            method: 'POST',
+            credentials: 'same-origin',
+            headers: {
+                'Content-Type': 'application/json',
+                'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').getAttribute('content'),
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify({ coffee_id: coffeeId, quantity: qty })
         })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            // Update cart count
-            document.getElementById('cart-count').textContent = data.cart_count;
-            
-            // Show success message with toast
-            showToast('Item added to cart!', 'success');
-        } else {
-            showToast('Failed to add item to cart', 'error');
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        showToast('Failed to add item to cart', 'error');
-    });
-    @else
-    window.location.href = '{{ route("login") }}';
-    @endauth
-}
+        .then(res => res.ok ? res.json() : res.json().then(e => Promise.reject(e)))
+        .then(data => {
+            console.log('Add to cart response:', data);
+            if (data && data.cart_count !== undefined) {
+                const count = Number(data.cart_count) || 0;
+                console.log('Cart count updated:', count);
+                if (badge) {
+                    badge.textContent = count;
+                    badge.style.display = count > 0 ? 'flex' : 'none';
+                }
+            }
+            // Optional: show a toast/snackbar using your UI method
+        })
+        .catch(err => {
+            console.error('Add to cart failed:', err);
+            // Optional: show error message to user
+        });
+    }
 
 function showToast(message, type) {
     // Simple toast notification

@@ -303,13 +303,25 @@ function addToCart(coffeeId) {
             // Update cart count
             document.getElementById('cart-count').textContent = data.cart_count;
             // Show success message
-            alert('Item added to cart!');
+            showToast('Item added to cart!', 'success');
         }
     })
     .catch(error => {
         console.error('Error:', error);
-        alert('Failed to add item to cart');
+        showToast('Failed to add item to cart', 'error');
     });
+}
+
+function showToast(message, type) {
+    // Simple toast notification
+    const toast = document.createElement('div');
+    toast.className = `fixed top-4 right-4 px-6 py-3 rounded-lg text-white z-50 ${type === 'success' ? 'bg-green-500' : 'bg-red-500'}`;
+    toast.textContent = message;
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
 }
 </script>
 @endpush
